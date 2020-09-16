@@ -34,7 +34,7 @@ npm install --save-dev lazy-store-loader
 <template>
 </template>
 
-<store path="@/store/module/xxx"/>
+<store path="xxx" url="@/store/module/xxx"/>
 
 <script>
 </script>
