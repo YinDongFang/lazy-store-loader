@@ -7,14 +7,13 @@ function isRegistered(path) {
 }
 
 function hasModule(path) {
-  if (typeof path === 'string') path = [path]
-
   return isRegistered.call(this._modules, path)
 }
 
 export default function generate(path, module) {
   if (!path || !module) return {}
 
+  const _path = path.split('/')
   module._refs = new Set()
 
   return {
@@ -22,8 +21,8 @@ export default function generate(path, module) {
       if (!this.$store) return console.info(`[lazy-store-mixin] missing $store`)
 
       try {
-        if (!hasModule.call(this.$store, path)) {
-          this.$store.registerModule(path, module)
+        if (!hasModule.call(this.$store, _path)) {
+          this.$store.registerModule(_path, module)
         }
 
         module._refs.add(this)
@@ -37,8 +36,8 @@ export default function generate(path, module) {
       try {
         module._refs.delete(this)
 
-        if (!module._refs.size && hasModule.call(this.$store, path))
-          this.$store.unregisterModule(module)
+        if (!module._refs.size && hasModule.call(this.$store, _path))
+          this.$store.unregisterModule(_path)
       } catch (error) {
         console.log(`[lazy-store-mixin] ${error}`)
       }

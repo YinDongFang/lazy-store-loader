@@ -1,6 +1,6 @@
 {
   "name": "lazy-store-loader",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "自定义块动态注册store的loader",
   "main": "./src/index.js",
   "scripts": {

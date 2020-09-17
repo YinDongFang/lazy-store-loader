@@ -2,7 +2,7 @@ const path = require('path')
 const qs = require('querystring')
 const loaderUtils = require('loader-utils')
 
-const mixinGeneratorPath = require.resolve('./runtime/mixin')
+const mixinGeneratorPath = require.resolve('./runtime/mixinGenerator')
 
 module.exports = function (source) {
   const {resourceQuery} = this
