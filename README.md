@@ -41,3 +41,5 @@ npm install --save-dev lazy-store-loader
 <style>
 </style>
 ```
+### v2
+以上是v1.0.3的使用方式，v2以后采用代码静态分析，获取mapState,mapActions,mapMutations等store引用，获取使用到的模块，根据loader参数提供的映射文件获取路径实现动态加载。

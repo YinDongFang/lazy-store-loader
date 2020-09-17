@@ -1,7 +1,7 @@
 {
   "name": "lazy-store-loader",
-  "version": "1.0.3",
-  "description": "自定义块动态注册store的loader",
+  "version": "2.0.0",
+  "description": "实现动态注册store的loader",
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

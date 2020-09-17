@@ -10,22 +10,26 @@ function hasModule(path) {
   return isRegistered.call(this._modules, path)
 }
 
-export default function generate(path, module) {
-  if (!path || !module) return {}
-
-  const _path = path.split('/')
-  module._refs = new Set()
+export default function generate(paths, modules) {
+  // 初步处理
+  for (let index = 0; index < modules.length; index++) {
+    const module = modules[index]
+    module._refs = new Set()
+    module._path = paths[index].split('/')
+  }
 
   return {
     beforeCreate() {
       if (!this.$store) return console.info(`[lazy-store-mixin] missing $store`)
 
       try {
-        if (!hasModule.call(this.$store, _path)) {
-          this.$store.registerModule(_path, module)
-        }
+        modules.forEach((module) => {
+          if (!hasModule.call(this.$store, .module_path)) {
+            this.$store.registerModule(module._path, module)
+          }
 
-        module._refs.add(this)
+          module._refs.add(this)
+        })
       } catch (error) {
         console.log(`[lazy-store-mixin] ${error}`)
       }
@@ -34,10 +38,14 @@ export default function generate(path, module) {
       if (!this.$store) return console.info(`[lazy-store-mixin] missing $store`)
 
       try {
-        module._refs.delete(this)
+        modules.forEach((module) => {
+          if (!module.runtime) return
 
-        if (!module._refs.size && hasModule.call(this.$store, _path))
-          this.$store.unregisterModule(_path)
+          module._refs.delete(this)
+
+          if (!module._refs.size && hasModule.call(this.$store, module._path))
+            this.$store.unregisterModule(module._path)
+        })
       } catch (error) {
         console.log(`[lazy-store-mixin] ${error}`)
       }
