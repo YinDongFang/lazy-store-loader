@@ -16,6 +16,7 @@ export default function generate(paths, modules) {
     const module = modules[index]
     module._refs = new Set()
     module._path = paths[index].split('/')
+    module.namespaced = true
   }
 
   return {
@@ -24,7 +25,7 @@ export default function generate(paths, modules) {
 
       try {
         modules.forEach((module) => {
-          if (!hasModule.call(this.$store, .module_path)) {
+          if (!hasModule.call(this.$store, module._path)) {
             this.$store.registerModule(module._path, module)
           }
 

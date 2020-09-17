@@ -4,9 +4,9 @@ const match = (text, regex) => {
   let match
   const matches = []
   while ((match = regex.exec(text))) {
-    matches.push(match[3])
+    if (match[3]) matches.push(match[3])
   }
-  return matches
+  return Array.from(new Set(matches))
 }
 
 module.exports = (text) => {
