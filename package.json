@@ -1,0 +1,29 @@
+{
+  "name": "lazy-store-loader",
+  "version": "2.0.3",
+  "description": "实现动态注册store的loader",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YinDongFang/lazy-store-loader.git"
+  },
+  "keywords": [
+    "store",
+    "vue",
+    "loader",
+    "webpack"
+  ],
+  "author": {
+    "name": "yindongfang",
+    "email": "1136005348@qq.com",
+    "url": "https://github.com/YinDongFang/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YinDongFang/lazy-store-loader/issues"
+  },
+  "homepage": "https://github.com/YinDongFang/lazy-store-loader#readme"
+}
